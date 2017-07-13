@@ -1,6 +1,6 @@
 {
   "name": "osjs-scheme-loader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "OS.js Scheme Webpack Loader",
   "url": "https://www.os-js.org",
   "email": "andersevenrud@gmail.com",
