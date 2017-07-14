@@ -42,17 +42,23 @@ module.exports = function(content) {
       //console.log(html);
       html = html.replace(/\r?\n|\r/g, '').replace(/\s+/g, ' ');
 
-      fs.write(fd, html);
-
-      loadModule('html-loader?' + attrs + '!' + path, function(err, data) {
-        cleanup();
-
+      fs.write(fd, html, function(err) {
         if ( err ) {
           callback(err);
-        } else {
-          callback(null, data);
+          return;
         }
+
+        loadModule('html-loader?' + attrs + '!' + path, function(err, data) {
+          cleanup();
+
+          if ( err ) {
+            callback(err);
+          } else {
+            callback(null, data);
+          }
+        });
       });
+
     }
   });
 };
