@@ -1,6 +1,6 @@
 {
   "name": "osjs-scheme-loader",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "OS.js Scheme Webpack Loader",
   "url": "https://www.os-js.org",
   "email": "andersevenrud@gmail.com",
@@ -22,6 +22,11 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/os-js/OS.js.git"
+  },
+  "dependencies": {
+    "html-loader": "git+https://github.com/webpack-contrib/html-loader.git#master",
+    "tmp": "0.0.31",
+    "webpack": "^3.1.0"
   },
   "main": "index.js"
 }
