@@ -34,17 +34,18 @@ module.exports = function(content) {
     html = html.replace(replace, fs.readFileSync(filename, 'utf-8'));
   });
 
-  tmp.file(function(err, path, fd, cleanup) {
+  html = replaceStockIcons(html);
+  html = html.replace(/\r?\n|\r/g, '').replace(/\s+/g, ' ');
+
+  tmp.file({template: path.join(context, '/tmp-XXXXXXXX.tmp')}, function(err, path, fd, cleanup) {
     if ( err ) {
       callback(err);
     } else {
-      html = replaceStockIcons(html);
-      //console.log(html);
-      html = html.replace(/\r?\n|\r/g, '').replace(/\s+/g, ' ');
 
       fs.write(fd, html, function(err) {
         if ( err ) {
           callback(err);
+          cleanup();
           return;
         }
 
